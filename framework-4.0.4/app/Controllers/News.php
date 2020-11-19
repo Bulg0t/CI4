@@ -11,7 +11,7 @@ class News extends Controller
     
         $data = [
             'news'  => $model->getNews(),
-            'title' => 'News archive',
+            'title' => 'Archiwum aktualności',
         ];
     
         echo view('templates/header', $data);
