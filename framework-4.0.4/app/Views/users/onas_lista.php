@@ -5,6 +5,8 @@
     <?php foreach ($users as $user_item): ?>
         
         <li><?= esc($user_item['login']); ?></li>
+        <li><?= esc($user_item['email']) ?></li>
+        <p><a href="/onas/<?= esc($user_item['login'], 'url'); ?>">Pokaż szczegóły</a></p>
     <?php endforeach; ?>
     </ol>
 

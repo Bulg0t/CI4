@@ -12,7 +12,7 @@
         <p><a href="/news/<?= esc($news_item['slug'], 'url'); ?>">Pokaż treść</a></p>
 
     <?php endforeach; ?>
-
+    <p><a href="/news/create"><b>Dodaj wiadomość</b></a></p>
 <?php else : ?>
 
     <h3>No News</h3>
