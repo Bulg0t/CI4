@@ -17,4 +17,5 @@ class NewsModel extends Model
                 ->where(['slug' => $slug])
                 ->first();
 }
+
 }

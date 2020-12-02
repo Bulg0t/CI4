@@ -35,7 +35,7 @@ $routes->get('/onas', 'Onas::index');
 $routes->get('onas/(:segment)','Onas::view/$1');
 $routes->match(['get', 'post'], 'news/create', 'News::create');
 $routes->get('news/(:segment)', 'News::view/$1');
-$routes->get('news', 'News::index');
+$routes->get('news', 'News::index',  ['as' => 'aktualnosci_1']);
 //$routes->get('(:any)', 'Pages::view/$1');
 /**
  * --------------------------------------------------------------------

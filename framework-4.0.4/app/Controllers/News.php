@@ -49,8 +49,9 @@ class News extends Controller
             'slug'  => url_title($this->request->getPost('title'), '-', TRUE),
             'body'  => $this->request->getPost('body'),
         ]);
-
+        echo view('templates/header', ['title' => 'Dodano wiadomości']);
         echo view('news/success');
+        echo view('templates/footer');
 
     }
     else
@@ -60,4 +61,18 @@ class News extends Controller
         echo view('templates/footer');
     }
 }
+    public function delete($slug = null)
+    {
+        if ($this->request->getMethod()==='post')
+        {
+            $model = new NewsModel();
+            $slug = $this->request->getPost('slug');
+            $model->getNews($slug);
+            echo view('news/delsuccess');
+        } else {
+            echo view('news/delete');
+
+        }
+
+    }
 }
