@@ -63,14 +63,25 @@ class News extends Controller
 }
     public function delete($slug = null)
     {
+        $model = new NewsModel();
         if ($this->request->getMethod()==='post')
         {
-            $model = new NewsModel();
-            $slug = $this->request->getPost('slug');
-            $model->getNews($slug);
-            echo view('news/delsuccess');
-        } else {
-            echo view('news/delete');
+            $id = $this->request->getPost('id');
+           // $data['news'] = $model->get($id);
+            $model->delete(['id'=>$id]);
+            echo view('news/delsuccess', ['id' => $id]);
+        } 
+        else {
+            $data['news'] = $model->getNews($slug);
+            if (empty($data['news']))
+                {
+                    throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: '. $slug);
+                }
+                $data['title'] = $data['news']['title'];
+    
+                echo view('templates/header', $data);
+                echo view('news/delform', $data);
+                echo view('templates/footer', $data);
 
         }
 
