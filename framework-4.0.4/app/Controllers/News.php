@@ -86,4 +86,37 @@ class News extends Controller
         }
 
     }
+    public function update($slug = false)
+    {
+        $model = new NewsModel();
+        if ($this->request->getMethod() === 'post' && $this->validate([
+            'title' => 'required|min_length[3]|max_length[255]',
+            'body'  => 'required'
+        ]))       
+        {
+            $id = $this->request->getPost('id');
+            $data= [
+                'title' => $this->request->getPost('title'),
+                'slug'  => url_title($this->request->getPost('title'), '-', TRUE),
+                'body'  => $this->request->getPost('body'),
+            ];
+            $model->update($id, $data);
+            echo view('news/updateok', ['slug' => $data['slug']]);
+        } 
+        else {
+            $data['news'] = $model->getNews($slug);
+            if (empty($data['news']))
+                {
+                    throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: '. $slug);
+                }
+                $data['title'] = $data['news']['title'];
+    
+                echo view('templates/header', $data);
+                echo view('news/update', $data);
+                echo view('templates/footer', $data);
+
+        }
+
+    }
+
 }

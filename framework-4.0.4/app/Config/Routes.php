@@ -32,10 +32,11 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 $routes->match(['get', 'post'], 'news/create', 'News::create');
 $routes->match(['post'], 'news/delete', 'News::delete');
+$routes->match(['post'], 'news/update', 'News::update');
+$routes->get('news/update/(:segment)', 'News::update/$1', ['as' => 'updatenews']);
 $routes->get('news/(:segment)', 'News::view/$1');
 $routes->get('news/delete/(:segment)', 'News::delete/$1', ['as' => 'delnews']);
 $routes->get('news', 'News::index', ['as' => 'aktualnosci_1']);
-$routes->get('news', 'News::index');
 $routes->get('onas', 'Onas::index');
 $routes->get('onas/(:segment)', 'Onas::view/$1');
 $routes->get('(:any)', 'Pages::view/$1');

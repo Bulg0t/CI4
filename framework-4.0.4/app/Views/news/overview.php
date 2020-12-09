@@ -10,7 +10,9 @@
             <?= esc($news_item['body']); ?>
         </div>
         <p><a href="/news/<?= esc($news_item['slug'], 'url'); ?>">Pokaż treść</a></p>
+        <p><a href="<?= route_to('updatenews', esc($news_item['slug'], 'url')) ?>">Edytuj wiadomość</a></p>
         <p><a href="<?= route_to('delnews', esc($news_item['slug'], 'url')) ?>">Usuń wiadomość</a></p>
+
     <?php endforeach; ?>
     <p><a href="/news/create"><b>Dodaj wiadomość</b></a></p>
 <?php else : ?>
