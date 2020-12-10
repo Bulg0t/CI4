@@ -14,9 +14,9 @@ class News extends Controller
             'title' => 'Archiwum aktualności',
         ];
     
-        echo view('templates/header', $data);
+        // echo view('templates/header', $data);
         echo view('news/overview', $data);
-        echo view('templates/footer', $data);
+        // echo view('templates/footer', $data);
     }
     public function view($slug = NULL)
     {
@@ -31,9 +31,9 @@ class News extends Controller
     
         $data['title'] = $data['news']['title'];
     
-        echo view('templates/header', $data);
+        // echo view('templates/header', $data);
         echo view('news/view', $data);
-        echo view('templates/footer', $data);
+        // echo view('templates/footer', $data);
     }
     public function create()
 {
