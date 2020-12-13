@@ -1,3 +1,7 @@
+<?= $this->extend('news\szablon') ?>
+
+<?= $this->section('content')?>
+
 <h2><?= esc($title); ?></h2>
 
 <?= \Config\Services::validation()->listErrors(); ?>
@@ -15,3 +19,4 @@
     <br>
     <p><a href="/news/">Powrót</a></p>
 </form>
+<?= $this->endSection() ?>

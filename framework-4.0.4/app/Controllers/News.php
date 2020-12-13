@@ -51,15 +51,11 @@ class News extends Controller
         ]);
         echo view('templates/header', ['title' => 'Dodano wiadomości']);
         echo view('news/success');
-        echo view('templates/footer');
-
     }
     else
     {
         echo view('templates/header', ['title' => 'Dodaj wiadomość']);
-        echo view('news/create');
-        echo view('templates/footer');
-    }
+        echo view('news/create');    }
 }
     public function delete($slug = null)
     {
