@@ -5,6 +5,7 @@ use CodeIgniter\Model;
 class UsersModel extends Model
 {
     protected $table = 'users';
+    protected $allowedFields = ['title','login','imie', 'nazwisko', 'email'];
     public function getUsers($login = false)
 {
     if ($login === false)
